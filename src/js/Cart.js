@@ -1,10 +1,13 @@
 "use strict";
+
+const { ModuleFilenameHelpers } = require("webpack");
+
 class Cart {
     constructor () {
-        items: [];
+        this.items = [];
     }
     add(product) {
-        this.items.unshift(product);
+        this.items.push(product);
     }
     getItemCount(){
         return this.items.length;
@@ -25,6 +28,8 @@ class Cart {
         return total;
     }
     getTax(){
-        return this.getTotalBeforeTax() - this.getTotalWithTax();
+        return this.getTotalWithTax() - this.getTotalBeforeTax();
     }
 }
+
+module.exports = Cart;
